@@ -1,7 +1,8 @@
 #!/bin/bash
 
 apt install poppler-utils
-pip install roboflow ultralytics
+pip install roboflow ultralytics vastai
+
 # 
 cd /workspace/
 # Cause the script to exit on failure.
