@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install poppler-utils
+apt install -y poppler-utils
 pip install roboflow ultralytics vastai
 
 # 
@@ -12,6 +12,7 @@ set -eo pipefail
 # pip install your-packages
 
 # Download some useful files
+wget -P "${WORKSPACE}/" https://raw.githubusercontent.com/zyr4c31/vast-ai-scripts/refs/heads/master/vastai-train.py
 # wget -P "${WORKSPACE}/" https://example.org/my-application.tar.gz
 # tar xvf ${WORKSPACE}/my-application.tar.gz"
 
@@ -26,3 +27,5 @@ export PORTAL_CONFIG="localhost:1111:11111:/:Instance Portal|0.0.0.0:8000:12345:
 
 # Reload Supervisor
 supervisorctl reload
+
+python vastai-train.py
