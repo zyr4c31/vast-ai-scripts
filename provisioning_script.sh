@@ -28,4 +28,4 @@ export PORTAL_CONFIG="localhost:1111:11111:/:Instance Portal|0.0.0.0:8000:12345:
 # Reload Supervisor
 supervisorctl reload
 
-python vastai-train.py
+# python vastai-train.py
