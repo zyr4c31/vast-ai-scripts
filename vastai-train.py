@@ -1,18 +1,18 @@
-model_name = "floorplans-seg"
-model_file_name= f"/workspace/{model_name}_v1.pt"
-save_file_name= f"/workspace/{model_name}_v1.pt"
-
 from roboflow import Roboflow
+from ultralytics import YOLO
 import os
 
 rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
-project = rf.workspace("floorplan-y38xx").project("floorplans-seg")
-version = project.version(5)
+
+project = rf.workspace("floorplan-y38xx").project("rooms-bb")
+version = project.version(10)
 dataset = version.download("yolov11")
 
-from ultralytics import YOLO
+room_model_name = "rooms-bb"
+save_file_name= f"/workspace/{room_model_name}_v1.pt"
+version = 10
 
-model = YOLO("yolo11x-seg.pt")
-results = model.train(data=f"/workspace/{model_name}-5/data.yaml")
+model = YOLO("yolo11x.pt")
+results = model.train(data=f"/workspace/{room_model_name}-{version}/data.yaml")
 
 model.save(save_file_name)
