@@ -1,6 +1,16 @@
+packages=["roboflow", "ultralytics"]
+
 from roboflow import Roboflow
 from ultralytics import YOLO
 import os
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+for package in packages:
+    install(package)
 
 rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
 
